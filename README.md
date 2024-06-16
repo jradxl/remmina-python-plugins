@@ -1,6 +1,6 @@
 # Remmina Python Plugins
 
-The original of this Python plugins are at: https://gitlab.com/Remmina/Remmina/-/wikis/Development/Plugin-Development/Python/
+The original of these Python Plugins are at: https://gitlab.com/Remmina/Remmina/-/wikis/Development/Plugin-Development/Python/
 
 Version here are sort of working for Remmina 1.4.35
 They appear in the application but not all do what they are intended to do.
