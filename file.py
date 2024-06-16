@@ -6,9 +6,9 @@ import remmina
 class Pluginfile:
     def __init__(self):
         self.name = "Python File Plugin"
-        self.pref_label = "Preference Label"
+        self.pref_label = "File: Preference Label"
         self.type = "file"
-        self.description = " File: Drop something onto Remmina"
+        self.description = "File: Drop something onto Remmina"
         self.version  = "1.0"
         self.export_hints = ".ttf"
 
