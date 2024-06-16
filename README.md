@@ -9,8 +9,10 @@ Remmina plugins are located in: <your path>/remmina/plugins
 such as /usr/lib/x86_64-linux-gnu/remmina/plugins in Ubuntu.
 
 The library, remmina-plugin-python_wrapper.so, must be represent for the python plugin to load.
-It is a dynamic loader. Just the *.py file needs to be represent, coded to Remmina's Python API
-To enable generation of the remmina-plugin-python_wrapper.so, -DWITH_PYTHONLIBS=ON must be given to cmake
+It is a dynamic loader. Just the *.py file needs to be present in same directory, coded to Remmina's Python API.
+(I know, it does seem odd to put source files in a library path)
+
+To enable generation of the remmina-plugin-python_wrapper.so, -DWITH_PYTHONLIBS=ON must be given to cmake.
 This library is not present in Ubuntu Jammy's repository (as Remmina 1.4.25), but it is 
 as remmina-plugin-python in Ubuntu Noble (as Remmina 1.4.35)
 
