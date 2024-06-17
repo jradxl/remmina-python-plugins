@@ -80,6 +80,9 @@ There are many C plugin examples where the RustDesk plugin works
 All API entries for v1.4.35 obtained by print(dir(remmina)) added to any "init" function
 and the output seen in the terminal window. Sorted alphabetically, with comma as a delimiter.
 Note the difference between def \__init__(self): and def init(self, gp):
+The Remmina Python Plugin API is coded in "python_wrapper_remmina.c" and some of the available functions
+are shown in the structure, "static PyMethodDef remmina_python_module_type_methods[] = {"
+
 
 BUTTONS_CANCEL,
 BUTTONS_CLOSE,
