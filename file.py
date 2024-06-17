@@ -20,7 +20,7 @@ class Pluginfile:
         # We promised to support the given file. Handle it:
         file = remmina.file_new()
         file.set_setting("name", path)
-        file.set_setting("protocol", "PyVNC")
+        file.set_setting("protocol", "File: PyVNC")
         # This file will appear as new entry in the list of stored connections in Remmina.
         return file
 

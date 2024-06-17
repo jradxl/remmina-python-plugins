@@ -38,6 +38,7 @@ python_wrapper_file.c:		export_func
 An entry in the left hand column of the Preference menu item shows, but there is nothing to the right.
 API:
 python_wrapper_pref.c:	    get_pref_body
+python_wrapper_pref.c:      on_button_clicked
 
 ## protocol-VNC.py, pyvnc.py
 Same plugin but different versions. Shows up as a protocol choice in New Connection Profile.
