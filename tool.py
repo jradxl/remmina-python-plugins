@@ -14,7 +14,11 @@ class PluginTool:
         self.version  = "1.0"
 
     def exec_func(self):
+        #Press the Tool Plugin: Press me! entry in the Hamburger menu
+        #This will be shown in the terminal window
         print("Tool Plugin: exec_func has been called!")
+        #This will be shown in the Debugging Window, opened from the Debugging option in the Hamburger menu
+        remmina.log_print("Tool Plugin: exec_func has been called! THIS IS A LOG_PRINT STATEMENT")  
 
 myToolPlugin = PluginTool()
 remmina.register_plugin(myToolPlugin)

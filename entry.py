@@ -11,8 +11,7 @@ class PluginEntry:
         self.name = "Python Entry Plugin"
         self.type = "entry"
         self.description = "Python Entry Plugin: Hello World!"
-        self.version  = "1.0"
-                
+        self.version  = "1.0"        
 
 myEntryPlugin = PluginEntry()
 remmina.register_plugin(myEntryPlugin)
