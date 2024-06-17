@@ -76,6 +76,86 @@ The plugin builder https://www.muflone.com/remmina-plugin-builder/english/
 is very useful for C language plugins.
 There are many C plugin examples where the RustDesk plugin works
 
+## Remmina Python Plugin API
+All API entries for v1.4.35 obtained by print(dir(remmina)) added to any "init" function
+and the output seen in the terminal window. Sorted alphabetically.
+
+BUTTONS_CANCEL
+BUTTONS_CLOSE
+BUTTONS_NONE
+BUTTONS_OK
+BUTTONS_OK_CANCEL
+BUTTONS_YES_NO
+MESSAGE_ERROR
+MESSAGE_INFO
+MESSAGE_OTHER
+MESSAGE_PANEL_FLAG_DOMAIN
+MESSAGE_PANEL_FLAG_SAVEPASSWORD
+MESSAGE_PANEL_FLAG_USERNAME
+MESSAGE_PANEL_FLAG_USERNAME_READONLY
+MESSAGE_QUESTION
+MESSAGE_WARNING
+PROTOCOL_FEATURE_PREF_CHECK
+PROTOCOL_FEATURE_PREF_RADIO
+PROTOCOL_FEATURE_TYPE_DYNRESUPDATE
+PROTOCOL_FEATURE_TYPE_GTKSOCKET
+PROTOCOL_FEATURE_TYPE_MULTIMON
+PROTOCOL_FEATURE_TYPE_PREF
+PROTOCOL_FEATURE_TYPE_SCALE
+PROTOCOL_FEATURE_TYPE_TOOL
+PROTOCOL_FEATURE_TYPE_UNFOCUS
+PROTOCOL_SETTING_TYPE_ASSISTANCE
+PROTOCOL_SETTING_TYPE_CHECK
+PROTOCOL_SETTING_TYPE_COMBO
+PROTOCOL_SETTING_TYPE_FILE
+PROTOCOL_SETTING_TYPE_FOLDER
+PROTOCOL_SETTING_TYPE_KEYMAP
+PROTOCOL_SETTING_TYPE_PASSWORD
+PROTOCOL_SETTING_TYPE_RESOLUTION
+PROTOCOL_SETTING_TYPE_SELECT
+PROTOCOL_SETTING_TYPE_SERVER
+PROTOCOL_SETTING_TYPE_TEXT
+PROTOCOL_SSH_SETTING_NONE
+PROTOCOL_SSH_SETTING_REVERSE_TUNNEL
+PROTOCOL_SSH_SETTING_SFTP
+PROTOCOL_SSH_SETTING_SSH
+PROTOCOL_SSH_SETTING_TUNNEL
+
+debug
+Feature
+file_new
+get_datadir
+get_main_window
+gtksocket_available
+log_print
+masterthread_exec_is_main_thread
+pref_get_scale_quality
+pref_get_ssh_loglevel
+pref_get_ssh_parseconfig
+pref_get_sshtunnel_port
+pref_get_value
+pref_keymap_get_keyval
+pref_set_value
+protocol_plugin_init_auth
+protocol_plugin_signal_connection_closed
+protocol_plugin_signal_connection_opened
+protocol_widget_get_profile_remote_height
+protocol_widget_get_profile_remote_width
+public_get_server_port
+rcw_open_from_file_full
+register_plugin
+Setting
+show_dialog
+unlock_new
+widget_pool_register
+
+__doc__
+__loader__
+__name__
+__package__
+__spec__
+
+
 //End
 June 2024
 
