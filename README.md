@@ -79,6 +79,7 @@ There are many C plugin examples where the RustDesk plugin works
 ## Remmina Python Plugin API
 All API entries for v1.4.35 obtained by print(dir(remmina)) added to any "init" function
 and the output seen in the terminal window. Sorted alphabetically, with comma as a delimiter.
+Note the difference between def \__init__(self): and def init(self, gp):
 
 BUTTONS_CANCEL,
 BUTTONS_CLOSE,
