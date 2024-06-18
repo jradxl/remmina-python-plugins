@@ -1,15 +1,18 @@
-# 2024-06-16
+# 2024-06-18
 # Remmina 1.4.35
 
 import sys
 import remmina
 import enum
 import gi
+import inspect
+import psutil
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
-import psutil
 
 ## Probably an earlier version of pyvnc1.py
+## Doesn't accually attempt to contact a VNC Server
+## But tabbed window does open
 
 class VncFeature:
     PrefQuality = 1
@@ -21,12 +24,11 @@ class VncFeature:
     Scale = 7
     Unfocus = 8
 
-
 class Plugin:
     def __init__(self):
         self.name = "Python PyVNC Plugin"
         self.type = "protocol"
-        self.description = "VNC but in Python!"
+        self.description = "PyVNC Plugin"
         self.version  = "1.0"
         self.icon_name = "org.remmina.Remmina-vnc-symbolic"
         self.icon_name_ssh = "org.remmina.Remmina-vnc-ssh-symbolic"
@@ -76,27 +78,38 @@ class Plugin:
 
     def open_connection(self, gp):
         print("[PyVNC.open_connection]: Called!")
-        pass
+        return True
 
     def close_connection(self, gp):
         print("[PyVNC.close_connection]: Called!")
-        pass
+        # The user requested to close the connection.
+        remmina.protocol_plugin_signal_connection_closed(gp)
 
     def query_feature(self, gp):
         print("[PyVNC.query_feature]: Called!")
-        pass
+        return True
 
     def call_feature(self, gp):
         print("[PyVNC.call_feature]: Called!")
         pass
 
-    def keystroke(self, gp):
+    def send_keystrokes(self, gp, strokes):
+        # Remmina received a key stroke and wants to pass it to the remote.
         print("[PyVNC.keystroke]: Called!")
-        pass
-
+        return True
+    
     def screenshot(self, gp):
         print("[PyVNC.screenshot]: Called!")
         pass
 
+    def map_event(self, gp):
+        # This is called when the widget is again on screen.
+        return True
+
+    def unmap_event(self, gp):
+        # This is called when the widget is again not being shown on screen anymore. Any intensive graphical output
+        # can be halted.
+        return True    
+    
 myPlugin = Plugin()
 remmina.register_plugin(myPlugin)

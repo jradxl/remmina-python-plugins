@@ -40,9 +40,9 @@ API:
 python_wrapper_pref.c:	    get_pref_body
 python_wrapper_pref.c:      on_button_clicked
 
-## protocol-VNC.py, pyvnc.py
-Same plugin but different versions. Shows up as a protocol choice in New Connection Profile.
-But VNC connect action is not tested.
+## protocol-VNC.py, pyvnc.py, protocol-x2go.py
+Same plugins but different versions. Shows up as a protocol choice in New Connection Profile.
+Don't actually connect to VNC and X2go Servers. X2go has an x2go library compile problem. 
 API:
 python_wrapper_protocol.c:	init
 python_wrapper_protocol.c:	open_connection
@@ -69,7 +69,8 @@ API:
 python_wrapper_tool.c:	    exec_func
 
 ## toolsdevler.py
-Also a protocol plugin
+Also a protocol plugin.
+Creates a button in a Remmina Tabbed Window
 
 ## See Also:
 The plugin builder https://www.muflone.com/remmina-plugin-builder/english/
@@ -82,7 +83,8 @@ and the output seen in the terminal window. Sorted alphabetically, with comma as
 Note the difference between def \__init__(self): and def init(self, gp):
 The Remmina Python Plugin API is coded in "python_wrapper_remmina.c" and some of the available functions
 are shown in the structure, "static PyMethodDef remmina_python_module_type_methods[] = {"
-
+Notes:
+--When debugging: Preferences/Applet, "Start in tray upon user login = disable, No tray icon = enable"
 
 BUTTONS_CANCEL,
 BUTTONS_CLOSE,

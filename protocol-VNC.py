@@ -1,4 +1,4 @@
-# 2024-06-16
+# 2024-06-18
 # Remmina 1.4.35
 
 import sys
@@ -6,6 +6,7 @@ import remmina
 import enum
 import gi
 import inspect
+import psutil
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
@@ -102,22 +103,22 @@ class Plugin:
 
     def open_connection(self, gp):
         # Is called when the user wants to open a connection whith this plugin.
-
-        # Write code to initiate the connection. Example:
         connection_file = gp.get_file()
+        print("Connection file path: {}", connection_file.get_path())
         connection_file.set_setting("disablepasswordstoring", False)
+        username = connection_file.get_setting("Username", "user")
         password = None
-
         # Determine if passwords should not be allowed to be stored.
         dont_save_passwords = connection_file.get_setting("disablepasswordstoring", False)
         # Open a dialog prompting connection information and credentials
         ret = remmina.protocol_plugin_init_auth(widget=gp,
-                                                flags= remmina.REMMINA_MESSAGE_PANEL_FLAG_USERNAME | remmina.REMMINA_MESSAGE_PANEL_FLAG_USERNAME_READONLY | remmina.REMMINA_MESSAGE_PANEL_FLAG_DOMAIN | remmina.REMMINA_MESSAGE_PANEL_FLAG_SAVEPASSWORD,
-                                                title="Python Rocks!",
-                                                default_username="",
-                                                default_password=connection_file.get_setting("password", ""),
-                                                default_domain="",
-                                                password_prompt="Your Password Rocks!")
+                flags= remmina.MESSAGE_PANEL_FLAG_USERNAME | remmina.MESSAGE_PANEL_FLAG_USERNAME_READONLY | 
+                       remmina.MESSAGE_PANEL_FLAG_DOMAIN | remmina.MESSAGE_PANEL_FLAG_SAVEPASSWORD,
+                title="Python Rocks!",
+                default_username=username,
+                default_password="",
+                default_domain="",
+                password_prompt="Your Password Rocks!")
 
         # Process the result of the dialog
         if ret == Gtk.ResponseType.CANCEL:
@@ -148,7 +149,7 @@ class Plugin:
     def call_feature(self, gp, feature):
         # Remmina asks to execute on of the features.
 
-        if feature.type == remmina.REMMINA_PROTOCOL_FEATURE_TYPE_PREF and feature.id is VncFeature.PrefQuality:
+        if feature.type == remmina.PROTOCOL_FEATURE_TYPE_PREF and feature.id is VncFeature.PrefQuality:
             file = gp.get_file()
             quality = file.get_setting("quality", 0)
             if quality == 9:

@@ -18,7 +18,8 @@ class PluginTool:
         #This will be shown in the terminal window
         print("Tool Plugin: exec_func has been called!")
         #This will be shown in the Debugging Window, opened from the Debugging option in the Hamburger menu
-        remmina.log_print("Tool Plugin: exec_func has been called! THIS IS A LOG_PRINT STATEMENT")  
+        remmina.log_print("Tool Plugin: exec_func has been called! THIS IS A LOG_PRINT STATEMENT")
+
 
 myToolPlugin = PluginTool()
 remmina.register_plugin(myToolPlugin)

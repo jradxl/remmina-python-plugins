@@ -1,7 +1,11 @@
-# 2024-06-16
+# 2024-06-18
 # Remmina 1.4.35
 
+# Displays a clickable button in a Remmina Tabbed Protocol window
+
 import sys
+import inspect
+#import rich
 
 if not hasattr(sys, 'argv'):
     sys.argv = ['']
@@ -14,7 +18,7 @@ import psutil
 
 class HelloPlugin:
     def __init__(self):
-        self.name = "toolsdevler: Python Hello World Plugin"
+        self.name = "toolsdevler: Python Hello Plugin"
         self.type = "protocol"
         self.description = "toolsdevler: Description!"
         self.version  = "1.0"
@@ -34,19 +38,23 @@ class HelloPlugin:
     def name(self):
         return "toolsdevler: Hello!"
 
-    def init(self):
+    def init(self, gp):
         print("toolsdevler: init!")
         return True
 
-    def open_connection(self, viewport):
+    #gp is remmina.RemminaProtocolWidget
+    def open_connection(self, gp):
         print("toolsdevler: open_connection!")
+        remmina.log_print("[%s]: toolsdevler: open connection\n" % self.name)
+        print(sys.version)
+        
         def foreach_child(child):
             child.add(self.btn)
             self.btn.show()
-        viewport.foreach(foreach_child)
+            
+        gtkviewport = gp.get_viewport()
+        gtkviewport.foreach(foreach_child)
         print("toolsdevler: Connected!")
-
-        remmina.log_print("[%s]: toolsdevler: open connection\n" % self.name)
         return True
 
     def draw(self, widget, cr, color):
@@ -60,6 +68,8 @@ class HelloPlugin:
     def close_connection(self, viewport):
         print("toolsdevler: close_connection!")
         remmina.log_print("[%s]: Plugin close connection\n" % self.name)
+        # The user requested to close the connection.
+        remmina.protocol_plugin_signal_connection_closed(viewport)
         return True
 
     def query_feature(self):
@@ -73,6 +83,15 @@ class HelloPlugin:
 
     def get_plugin_screenshot(self):
         pass
+
+    def map_event(self, gp):
+        # This is called when the widget is again on screen.
+        return True
+
+    def unmap_event(self, gp):
+        # This is called when the widget is again not being shown on screen anymore. Any intensive graphical output
+        # can be halted.
+        return True
 
 myPlugin = HelloPlugin()
 remmina.register_plugin(myPlugin)
